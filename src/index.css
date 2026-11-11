@@ -523,3 +523,100 @@ button[aria-busy="true"] { cursor: progress; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+@media (min-width: 800px) {
+  .welcome {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+    grid-template-rows: auto auto 1fr;
+    align-items: start;
+    gap: 24px 48px;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 32px 40px 48px;
+  }
+  .welcome__top {
+    grid-column: 1 / -1;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .welcome .intro { grid-column: 1; grid-row: 2; }
+  .welcome .intro h1 { font-size: clamp(3.5rem, 5vw, 5rem); }
+  .welcome .intro p { max-width: 42ch; }
+  .welcome .swing-preview { grid-column: 2; grid-row: 2 / span 2; margin: 0; }
+  .welcome__choices { grid-column: 1; grid-row: 3; margin: 0; }
+  .welcome > .btn { grid-column: 1; justify-self: start; }
+
+  .main { max-width: 960px; }
+  .main--wide { max-width: 1240px; }
+  .app:not(:has(> .tabbar)) .main { max-width: 640px; }
+  .screen { padding: 32px; }
+  .screen--tag .player, .review .review__stage {
+    width: 100%;
+    margin-inline: 0;
+  }
+  .live__stage { aspect-ratio: 16 / 9; max-height: 64dvh; }
+  .live__cover { padding: 32px; }
+}
+
+@media (min-width: 1024px) {
+  .app:has(> .tabbar) {
+    display: grid;
+    grid-template-columns: 168px minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    max-width: 1440px;
+    margin-inline: auto;
+  }
+  .app > .topbar { grid-column: 1 / -1; }
+  .app:has(> .tabbar) > .main {
+    grid-column: 2;
+    grid-row: 2;
+    padding-bottom: 32px;
+  }
+  .app > .tabbar {
+    position: sticky;
+    inset: auto;
+    top: 68px;
+    grid-column: 1;
+    grid-row: 2;
+    grid-template-columns: minmax(0, 1fr);
+    align-self: start;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 20px 12px;
+    border-top: 0;
+    border-right: 1px solid var(--line-soft);
+    gap: 4px;
+  }
+  .tabbar__btn {
+    flex-direction: row;
+    justify-content: flex-start;
+    min-height: 48px;
+    gap: 12px;
+    padding: 0 16px;
+    font-size: 0.95rem;
+  }
+  .tabbar__btn--on::before {
+    top: 12px;
+    bottom: 12px;
+    left: 0;
+    width: 3px;
+    height: auto;
+  }
+}
+
+@media (min-width: 1240px) {
+  .live {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(276px, 0.42fr);
+    align-items: start;
+    gap: 24px;
+  }
+  .live__controls { padding-inline: 0; }
+  .live > :not(.live__stage, .live__controls) {
+    grid-column: 1 / -1;
+    margin-inline: 0;
+  }
+}
